@@ -20,14 +20,16 @@ function init(){
 	balls = [ball1, ball2];
 }
 function gameLoop(){
+	draw.clear();
+	
 	//do physics
 	balls[0].pos.add(balls[0].vel);
 	balls[1].pos.add(balls[1].vel);
 	
 	
 	//draw balls
-	balls[0].draw;
-	balls[1].draw;
+	balls[0].draw();
+	balls[1].draw();
 }
 
 
