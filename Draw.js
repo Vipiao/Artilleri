@@ -34,6 +34,23 @@ Draw.prototype.circleOutline = function(color,centerPos,radius, width = 1) {
 	this.pen.lineWidth = width;
 	this.pen.stroke();
 }
+Draw.prototype.shapeOutline = function (color,corners, width = 1) {
+	// takes in color ("string"), corners (array of vectors), width (optional float). Circumference is closed.
+	if(corners.length == 0){
+		return;
+	}
+	this.pen.beginPath();
+	if (this.flipVertical){
+		this.pen.moveTo(corners[0].x, this.canvas.height - corners[0].y);
+		for (var i=1;i<corners.length;i++) {
+			this.pen.lineTo(corners[i].x, this.canvas.height - corners[i].y);
+		}
+	}
+	this.pen.closePath();
+	this.pen.strokeStyle = color;
+	this.pen.lineWidth = width;
+	this.pen.stroke();
+}
 Draw.prototype.vAxis = function (color,x, width = 1) { // draws a vertical axis
 	this.segC(color, x, 0, x, this.canvas.height, width);
 }
