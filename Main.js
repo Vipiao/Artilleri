@@ -30,8 +30,10 @@ function gameLoop(){
 		balls[i].pos.add(balls[i].vel.add(grav));
 	}
 
+	//draw tanks
+	
+	
 	//draw balls
-
 	for(var i = 0; i < balls.length; i++) {
 		balls[i].draw();
 	}
