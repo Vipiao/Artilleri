@@ -5,7 +5,8 @@ function Draw(canvas_ID){
 	this.pen = canvas.getContext("2d");
 	this.flipVertical = true;
 }
-Draw.prototype.clear = function (color) {
+Draw.prototype.clear = function (color = "white") {
+	// will fill the entire screen with the specified color
 	this.rectStartEndFill(color, new Vec(0,0), new Vec(this.canvas.width, this.canvas.height));
 }
 Draw.prototype.rectStartEndFill = function (color, start, end) {
