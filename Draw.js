@@ -5,7 +5,24 @@ function Draw(canvas_ID){
 	this.pen = canvas.getContext("2d");
 	this.flipVertical = true;
 }
+Draw.prototype.clear = function (color) {
+	this.rectStartEndFill(color, new Vec(0,0), new Vec(this.canvas.width, this.canvas.height));
+}
+Draw.prototype.rectStartEndFill = function (color, start, end) {
+	// will fill inn a rectangle from start vector (bottom left) to the end vector (top right)
+	if (this.flipVertical){
+		start = Vec.newVec(start);
+		start.y = this.canvas.height - start.y;
+		end = Vec.newVec(end);
+		end.y = this.canvas.height - end.y;
+	}
+	this.pen.beginPath();
+	this.pen.rect(start.x,start.y, end.x-start.x, end.y-start.y);
+	this.pen.fillStyle = color;
+	this.pen.fill();
+}
 Draw.prototype.circleOutline = function(color,centerPos,radius, width = 1) {
+	// will draw an outline of a circle with color (string) at centerPos (vector) width radius and an optional width
 	this.pen.beginPath();
 	if (this.flipVertical){
 		this.pen.arc(centerPos.x, this.canvas.height - centerPos.y,radius,0, Math.PI * 2);
