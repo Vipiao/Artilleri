@@ -17,8 +17,8 @@ function init(){
 	grav = new Vec(0, -0.01);
 	draw = new Draw("canvas");
 	
-	ball1 = new Ball(new Vec(100, 100), new Vec(0.3, 2), 2, 1, "blue");
-	ball2 = new Ball(new Vec(100, 100), new Vec(0.05, 1.3), 2, 2, "black");
+	ball1 = new Ball(new Vec(100, 100), new Vec(0.3, 2), 20, 1, "blue");
+	ball2 = new Ball(new Vec(100, 100), new Vec(0.05, 1.3), 20, 2, "black");
 	balls = [ball1, ball2];
 }
 function gameLoop(){
@@ -37,8 +37,10 @@ function gameLoop(){
 	}
 
 	// debug
-	if(tick == 100){
-		balls[0].explode();
+	if(tick % 50 == 0){
+		for(var i=balls.length - 1; i>=0; i--){
+			balls[i].explode();
+		}
 	}
 	// debug end
 
