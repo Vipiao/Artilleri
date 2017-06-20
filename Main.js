@@ -11,7 +11,7 @@ window.onload = init;
 
 function init(){
 	fps = 60;
-	loop = setInterval(fps / 1000);
+	loop = setInterval(gameLoop, fps / 1000);
 	grav = new Vec(0.1);
 	draw = new Draw("canvas");
 	
