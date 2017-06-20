@@ -1,4 +1,5 @@
 
+var tick;
 var fps;
 var loop;
 var grav;
@@ -10,6 +11,7 @@ var draw;
 window.onload = init;
 
 function init(){
+	tick = 0;
 	fps = 60;
 	loop = setInterval(gameLoop, fps / 1000);
 	grav = new Vec(0, -0.01);
@@ -20,6 +22,7 @@ function init(){
 	balls = [ball1, ball2];
 }
 function gameLoop(){
+	tick ++;
 	draw.clear();
 	
 	//do physics
@@ -28,10 +31,17 @@ function gameLoop(){
 	}
 
 	//draw balls
+
 	for(var i = 0; i < balls.length; i++) {
 		balls[i].draw();
 	}
-	
+
+	// debug
+	if(tick == 100){
+		balls[0].explode();
+	}
+	// debug end
+
 }
 
 
