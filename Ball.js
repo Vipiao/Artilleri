@@ -7,4 +7,7 @@ function Ball(position, vel, rad, mass, color){
 	this.color = color;
 }
 
+Ball.prototype.draw = function() {
+	Draw.circleOutline(this.color, this.pos, this.rad);
+}
 
