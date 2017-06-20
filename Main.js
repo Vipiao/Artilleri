@@ -1,12 +1,20 @@
 
+var fps;
+var loop;
 
 
 
 
-window.onload = start;
-function start(){
+window.onload = init;
+function init(){
+	fps = 60;
+	loop = setInterval(fps / 1000);
+}
+function gameLoop(){
 	
 }
+
+
 
 
 
