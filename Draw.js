@@ -22,13 +22,12 @@ Draw.prototype.rectStartEndFill = function (color, start, end) {
 	this.pen.fillStyle = color;
 	this.pen.fill();
 }
-Draw.prototype.rectHeightWidthRotFill = function (color, pos, height, width, rot) { //VIRKER IKKE, TODO
-	this.pen.translate(pos.x, -pos.y);
+Draw.prototype.rectHeightWidthRotFill = function (color, pos, height, width, rot = 0) { // will draw a rectangle with attributes colour (string), height, width, rotation (radians, optional) with centre in vector pos
+	this.pen.translate(pos.x, pos.y);
 	this.pen.rotate(rot);
-	draw.rectStartEndFill(color, new Vec(- width/2, - height/2), new Vec(width/2, height/2));
+	draw.rectStartEndFill(color, new Vec(- width/2 - 0, - height/2 + canvas.height), new Vec(width/2 - 0, height/2 + canvas.height));
 	this.pen.rotate(-rot);
-	this.pen.translate(-pos.x, pos.y);
-	
+	this.pen.translate(-pos.x, -pos.y);
 }
 Draw.prototype.circleOutline = function(color,centerPos,radius, width = 1) {
 	// will draw an outline of a circle with color (string) at centerPos (vector) width radius and an optional width
